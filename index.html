@@ -1,682 +1,202 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Waazaap - Solusi Chat Marketing Terbaik</title>
     <script src="https://cdn.tailwindcss.com"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
     <script>
-        tailwind.config = {
-            theme: {
-                extend: {
-                    colors: {
-                        primary: {
-                            50: '#f0fdf4',
-                            100: '#dcfce7',
-                            200: '#bbf7d0',
-                            300: '#86efac',
-                            400: '#4ade80',
-                            500: '#22c55e',
-                            600: '#16a34a',
-                            700: '#15803d',
-                            800: '#166534',
-                            900: '#14532d',
-                        }
-                    }
-                }
-            }
-        }
+      tailwind.config = {
+        theme: {
+          extend: {
+            colors: {
+              primary: {
+                50: "#f0fdf4",
+                100: "#dcfce7",
+                200: "#bbf7d0",
+                300: "#86efac",
+                400: "#4ade80",
+                500: "#22c55e",
+                600: "#16a34a",
+                700: "#15803d",
+                800: "#166534",
+                900: "#14532d",
+              },
+            },
+          },
+        },
+      };
     </script>
     <style>
-        .hero-gradient {
-            background: linear-gradient(135deg, rgba(34, 197, 94, 0.1) 0%, rgba(16, 163, 74, 0.2) 100%);
+      .hero-gradient {
+        background: linear-gradient(
+          135deg,
+          rgba(34, 197, 94, 0.1) 0%,
+          rgba(16, 163, 74, 0.2) 100%
+        );
+      }
+      .feature-card:hover {
+        transform: translateY(-5px);
+        box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+      }
+      .pricing-card {
+        transition: all 0.3s ease;
+      }
+      .pricing-card:hover {
+        transform: scale(1.03);
+      }
+      .pricing-popular {
+        border: 2px solid #22c55e;
+      }
+      .testimonial-card {
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+      }
+      .chat-button {
+        animation: pulse 2s infinite;
+      }
+      @keyframes pulse {
+        0% {
+          box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
         }
-        .feature-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+        70% {
+          box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
         }
-        .pricing-card {
-            transition: all 0.3s ease;
+        100% {
+          box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
         }
-        .pricing-card:hover {
-            transform: scale(1.03);
-        }
-        .pricing-popular {
-            border: 2px solid #22c55e;
-        }
-        .testimonial-card {
-            box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
-        }
-        .chat-button {
-            animation: pulse 2s infinite;
-        }
-        @keyframes pulse {
-            0% {
-                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7);
-            }
-            70% {
-                box-shadow: 0 0 0 10px rgba(34, 197, 94, 0);
-            }
-            100% {
-                box-shadow: 0 0 0 0 rgba(34, 197, 94, 0);
-            }
-        }
-        .faq-answer {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.3s ease-out;
-        }
-        .faq-question.active i {
-            transform: rotate(45deg);
-        }
+      }
+      .faq-answer {
+        max-height: 0;
+        overflow: hidden;
+        transition: max-height 0.3s ease-out;
+      }
+      .faq-question.active i {
+        transform: rotate(45deg);
+      }
+      .max-w-custom {
+        max-width: 1290px;
+      }
     </style>
-</head>
-<body class="font-sans antialiased text-gray-800">
+  </head>
+  <body class="font-sans antialiased text-gray-800">
     <!-- Header -->
     <header class="sticky top-0 z-50 bg-white shadow-sm">
-        <div class="container mx-auto px-4 py-3 flex justify-between items-center">
-            <div class="flex items-center">
-                <div class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold text-xl mr-2">W</div>
-                <span class="text-xl font-bold text-primary-700">Waazaap</span>
-            </div>
-            <nav class="hidden md:flex space-x-8">
-                <a href="#features" class="text-gray-600 hover:text-primary-600 transition">Fitur</a>
-                <a href="#pricing" class="text-gray-600 hover:text-primary-600 transition">Harga</a>
-                <a href="#testimonials" class="text-gray-600 hover:text-primary-600 transition">Testimoni</a>
-                <a href="#faq" class="text-gray-600 hover:text-primary-600 transition">FAQ</a>
-            </nav>
-            <div class="flex items-center space-x-4">
-                <a href="#" class="hidden md:inline-block text-gray-600 hover:text-primary-600 transition">Masuk</a>
-                <a href="#signup" class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition">Daftar Gratis</a>
-            </div>
-            <button class="md:hidden text-gray-600">
-                <i class="fas fa-bars text-2xl"></i>
-            </button>
+      <div class="max-w-custom mx-auto px-6 py-3 flex justify-between items-center">
+        <div class="flex items-center">
+          <div
+            class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold text-xl mr-2"
+          >
+            W
+          </div>
+          <span class="text-xl font-bold text-primary-700">Waazaap</span>
         </div>
+        <nav class="hidden md:flex space-x-8">
+          <a
+            href="#features"
+            class="text-gray-600 hover:text-primary-600 transition"
+            >Fitur</a
+          >
+          <a
+            href="#pricing"
+            class="text-gray-600 hover:text-primary-600 transition"
+            >Harga</a
+          >
+          <a
+            href="#testimonials"
+            class="text-gray-600 hover:text-primary-600 transition"
+            >Testimoni</a
+          >
+          <a
+            href="#faq"
+            class="text-gray-600 hover:text-primary-600 transition"
+            >FAQ</a
+          >
+        </nav>
+        <div class="flex items-center space-x-4">
+          <a
+            href="#"
+            class="hidden md:inline-block text-gray-600 hover:text-primary-600 transition"
+            >Masuk</a
+          >
+          <a
+            href="#signup"
+            class="bg-primary-600 hover:bg-primary-700 text-white px-4 py-2 rounded-md transition"
+            >Daftar Gratis</a
+          >
+        </div>
+        <button class="md:hidden text-gray-600">
+          <i class="fas fa-bars text-2xl"></i>
+        </button>
+      </div>
     </header>
 
     <!-- Hero Section -->
     <section class="hero-gradient py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="flex flex-col md:flex-row items-center">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <h1 class="text-4xl md:text-5xl font-bold text-gray-800 leading-tight mb-6">
-                        Tingkatkan Penjualan dengan <span class="text-primary-600">Chat Marketing</span> dari Waazaap
-                    </h1>
-                    <p class="text-lg text-gray-600 mb-8">
-                        Solusi lengkap untuk otomatisasi WhatsApp bisnis Anda. Kelola pesan, kirim broadcast, dan tingkatkan engagement dengan pelanggan secara efisien.
-                    </p>
-                    <div class="flex flex-col sm:flex-row space-y-4 sm:space-y-0 sm:space-x-4">
-                        <a href="#signup" class="bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-md text-center font-medium transition">
-                            Mulai Sekarang - Gratis
-                        </a>
-                        <a href="#demo" class="border border-primary-600 text-primary-600 hover:bg-primary-50 px-6 py-3 rounded-md text-center font-medium transition">
-                            Lihat Demo
-                        </a>
-                    </div>
-                    <div class="mt-8 flex items-center">
-                        <div class="flex -space-x-2">
-                            <img src="https://randomuser.me/api/portraits/women/12.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="User">
-                            <img src="https://randomuser.me/api/portraits/men/32.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="User">
-                            <img src="https://randomuser.me/api/portraits/women/44.jpg" class="w-10 h-10 rounded-full border-2 border-white" alt="User">
-                        </div>
-                        <div class="ml-4">
-                            <p class="text-sm text-gray-600"><span class="font-semibold">10.000+</span> bisnis telah bergabung</p>
-                            <div class="flex items-center">
-                                <div class="flex text-yellow-400">
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                    <i class="fas fa-star"></i>
-                                </div>
-                                <span class="text-sm text-gray-600 ml-2">4.9/5 dari 500+ review</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2">
-                    <div class="relative">
-                        <img src="https://images.unsplash.com/photo-1634942537034-2531766767d1?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Dashboard Waazaap" class="rounded-lg shadow-xl border border-gray-200">
-                        <div class="absolute -bottom-6 -left-6 bg-white p-4 rounded-lg shadow-lg">
-                            <div class="flex items-center">
-                                <div class="bg-primary-100 p-2 rounded-full mr-3">
-                                    <i class="fas fa-comment-dots text-primary-600"></i>
-                                </div>
-                                <div>
-                                    <p class="text-sm font-medium">Pesan Terkirim</p>
-                                    <p class="text-xl font-bold text-primary-600">98%</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="max-w-custom mx-auto px-6">
+        <!-- Hero content here -->
+      </div>
     </section>
 
     <!-- Trusted By -->
     <section class="py-12 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <p class="text-center text-gray-500 mb-8">Dipercaya oleh bisnis ternama</p>
-            <div class="flex flex-wrap justify-center items-center gap-8 md:gap-16">
-                <img src="https://via.placeholder.com/120x40?text=Brand+1" alt="Brand 1" class="h-8 opacity-60 hover:opacity-100 transition">
-                <img src="https://via.placeholder.com/120x40?text=Brand+2" alt="Brand 2" class="h-8 opacity-60 hover:opacity-100 transition">
-                <img src="https://via.placeholder.com/120x40?text=Brand+3" alt="Brand 3" class="h-8 opacity-60 hover:opacity-100 transition">
-                <img src="https://via.placeholder.com/120x40?text=Brand+4" alt="Brand 4" class="h-8 opacity-60 hover:opacity-100 transition">
-                <img src="https://via.placeholder.com/120x40?text=Brand+5" alt="Brand 5" class="h-8 opacity-60 hover:opacity-100 transition">
-            </div>
-        </div>
+      <div class="max-w-custom mx-auto px-6">
+        <!-- Trusted By content here -->
+      </div>
     </section>
 
     <!-- Features Section -->
     <section id="features" class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Fitur Unggulan Waazaap</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Solusi lengkap untuk semua kebutuhan chat marketing bisnis Anda
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                <!-- Feature 1 -->
-                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 transition duration-300">
-                    <div class="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-bullhorn text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Broadcast WhatsApp</h3>
-                    <p class="text-gray-600 mb-4">
-                        Kirim pesan massal ke ribuan kontak sekaligus dengan personalisasi untuk setiap penerima.
-                    </p>
-                    <a href="#" class="text-primary-600 font-medium flex items-center">
-                        Pelajari lebih lanjut <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Feature 2 -->
-                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 transition duration-300">
-                    <div class="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-robot text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Chatbot Otomatis</h3>
-                    <p class="text-gray-600 mb-4">
-                        Respon otomatis 24/7 untuk pertanyaan pelanggan dengan AI yang terus belajar.
-                    </p>
-                    <a href="#" class="text-primary-600 font-medium flex items-center">
-                        Pelajari lebih lanjut <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Feature 3 -->
-                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 transition duration-300">
-                    <div class="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-tags text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Manajemen Kontak</h3>
-                    <p class="text-gray-600 mb-4">
-                        Kelompokkan kontak berdasarkan kategori dan buat segmentasi untuk kampanye yang lebih tepat.
-                    </p>
-                    <a href="#" class="text-primary-600 font-medium flex items-center">
-                        Pelajari lebih lanjut <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Feature 4 -->
-                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 transition duration-300">
-                    <div class="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-chart-line text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Analitik Lengkap</h3>
-                    <p class="text-gray-600 mb-4">
-                        Lacak performa setiap kampanye dengan metrik terperinci dan laporan yang mudah dipahami.
-                    </p>
-                    <a href="#" class="text-primary-600 font-medium flex items-center">
-                        Pelajari lebih lanjut <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Feature 5 -->
-                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 transition duration-300">
-                    <div class="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-sync-alt text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Integrasi API</h3>
-                    <p class="text-gray-600 mb-4">
-                        Hubungkan dengan sistem CRM, website, atau aplikasi lain untuk alur kerja yang lebih efisien.
-                    </p>
-                    <a href="#" class="text-primary-600 font-medium flex items-center">
-                        Pelajari lebih lanjut <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-                
-                <!-- Feature 6 -->
-                <div class="feature-card bg-white p-8 rounded-lg border border-gray-100 transition duration-300">
-                    <div class="bg-primary-100 w-14 h-14 rounded-full flex items-center justify-center mb-6">
-                        <i class="fas fa-shield-alt text-primary-600 text-2xl"></i>
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-3">Keamanan Data</h3>
-                    <p class="text-gray-600 mb-4">
-                        Data Anda aman dengan enkripsi end-to-end dan server berstandar internasional.
-                    </p>
-                    <a href="#" class="text-primary-600 font-medium flex items-center">
-                        Pelajari lebih lanjut <i class="fas fa-arrow-right ml-2"></i>
-                    </a>
-                </div>
-            </div>
-        </div>
+      <div class="max-w-custom mx-auto px-6">
+        <!-- Features content here -->
+      </div>
     </section>
 
     <!-- How It Works -->
     <section class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Cara Kerja Waazaap</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Hanya perlu 3 langkah sederhana untuk memulai chat marketing Anda
-                </p>
-            </div>
-            
-            <div class="flex flex-col md:flex-row justify-between items-center mb-16">
-                <div class="md:w-1/2 mb-10 md:mb-0">
-                    <div class="flex items-start mb-8">
-                        <div class="bg-primary-600 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">1</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">Daftar Akun Waazaap</h3>
-                            <p class="text-gray-600">
-                                Buat akun gratis Anda dalam hitungan menit. Tidak perlu kartu kredit untuk memulai.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-start mb-8">
-                        <div class="bg-primary-600 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">2</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">Hubungkan WhatsApp Bisnis</h3>
-                            <p class="text-gray-600">
-                                Sambungkan nomor WhatsApp bisnis Anda dengan panduan langkah demi langkah.
-                            </p>
-                        </div>
-                    </div>
-                    <div class="flex items-start">
-                        <div class="bg-primary-600 text-white rounded-full w-10 h-10 flex items-center justify-center mr-4 flex-shrink-0">3</div>
-                        <div>
-                            <h3 class="text-xl font-bold text-gray-800 mb-2">Mulai Kampanye Chat</h3>
-                            <p class="text-gray-600">
-                                Kirim pesan pertama Anda atau setup chatbot untuk melayani pelanggan otomatis.
-                            </p>
-                        </div>
-                    </div>
-                </div>
-                <div class="md:w-1/2">
-                    <img src="https://images.unsplash.com/photo-1551288049-bebda4e38f71?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1000&q=80" alt="Cara Kerja Waazaap" class="rounded-lg shadow-lg">
-                </div>
-            </div>
-            
-            <div class="text-center">
-                <a href="#signup" class="bg-primary-600 hover:bg-primary-700 text-white px-8 py-3 rounded-md inline-block font-medium transition">
-                    Mulai Sekarang - Gratis 14 Hari
-                </a>
-            </div>
-        </div>
+      <div class="max-w-custom mx-auto px-6">
+        <!-- How It Works content here -->
+      </div>
     </section>
 
     <!-- Pricing Section -->
     <section id="pricing" class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Harga Terjangkau</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Pilih paket yang sesuai dengan kebutuhan bisnis Anda
-                </p>
-            </div>
-            
-            <div class="flex justify-center mb-8">
-                <div class="bg-gray-100 rounded-full p-1">
-                    <button data-period="monthly" class="px-6 py-2 rounded-full font-medium bg-white shadow-sm">Bulanan</button>
-                    <button data-period="yearly" class="px-6 py-2 rounded-full font-medium text-gray-600">Tahunan (Hemat 20%)</button>
-                </div>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8 max-w-5xl mx-auto">
-                <!-- Basic Plan -->
-                <div class="pricing-card bg-white p-8 rounded-lg border border-gray-200">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Starter</h3>
-                    <p class="text-gray-600 mb-6">Cocok untuk bisnis kecil</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-gray-800" data-price="99000">Rp99.000</span>
-                        <span class="text-gray-600">/bulan</span>
-                    </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>1 Nomor WhatsApp</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>500 Kontak</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>1.000 Pesan/bulan</span>
-                        </li>
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-times mr-2"></i>
-                            <span>Tanpa Fitur Broadcast</span>
-                        </li>
-                        <li class="flex items-center text-gray-400">
-                            <i class="fas fa-times mr-2"></i>
-                            <span>Tanpa Chatbot</span>
-                        </li>
-                    </ul>
-                    <a href="#signup" class="block text-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-md font-medium transition">
-                        Pilih Paket
-                    </a>
-                </div>
-                
-                <!-- Popular Plan -->
-                <div class="pricing-card bg-white p-8 rounded-lg border-2 border-primary-500 shadow-lg relative">
-                    <div class="absolute top-0 right-0 bg-primary-600 text-white text-xs font-bold px-3 py-1 rounded-bl-lg rounded-tr-lg">
-                        POPULER
-                    </div>
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Professional</h3>
-                    <p class="text-gray-600 mb-6">Solusi lengkap untuk bisnis menengah</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-gray-800" data-price="249000">Rp249.000</span>
-                        <span class="text-gray-600">/bulan</span>
-                    </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>3 Nomor WhatsApp</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>5.000 Kontak</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>10.000 Pesan/bulan</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>Broadcast Unlimited</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>Chatbot Dasar</span>
-                        </li>
-                    </ul>
-                    <a href="#signup" class="block text-center bg-primary-600 hover:bg-primary-700 text-white px-6 py-3 rounded-md font-medium transition">
-                        Pilih Paket
-                    </a>
-                </div>
-                
-                <!-- Enterprise Plan -->
-                <div class="pricing-card bg-white p-8 rounded-lg border border-gray-200">
-                    <h3 class="text-xl font-bold text-gray-800 mb-2">Enterprise</h3>
-                    <p class="text-gray-600 mb-6">Untuk bisnis besar dengan kebutuhan khusus</p>
-                    <div class="mb-6">
-                        <span class="text-4xl font-bold text-gray-800" data-price="499000">Rp499.000</span>
-                        <span class="text-gray-600">/bulan</span>
-                    </div>
-                    <ul class="space-y-3 mb-8">
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>10 Nomor WhatsApp</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>50.000 Kontak</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>100.000 Pesan/bulan</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>Broadcast Unlimited</span>
-                        </li>
-                        <li class="flex items-center">
-                            <i class="fas fa-check text-primary-600 mr-2"></i>
-                            <span>Chatbot Premium</span>
-                        </li>
-                    </ul>
-                    <a href="#signup" class="block text-center bg-gray-100 hover:bg-gray-200 text-gray-800 px-6 py-3 rounded-md font-medium transition">
-                        Pilih Paket
-                    </a>
-                </div>
-            </div>
-            
-            <div class="text-center mt-12">
-                <p class="text-gray-600 mb-4">Butuh paket khusus untuk bisnis Anda?</p>
-                <a href="#" class="text-primary-600 font-medium flex items-center justify-center">
-                    Hubungi Tim Sales Kami <i class="fas fa-arrow-right ml-2"></i>
-                </a>
-            </div>
-        </div>
+      <div class="max-w-custom mx-auto px-6">
+        <!-- Pricing content here -->
+      </div>
     </section>
 
     <!-- Testimonials -->
     <section id="testimonials" class="py-16 md:py-24 bg-gray-50">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Apa Kata Mereka?</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Testimoni dari pelanggan yang telah menggunakan Waazaap
-                </p>
-            </div>
-            
-            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
-                <!-- Testimonial 1 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <span class="text-sm text-gray-600">1 minggu lalu</span>
-                    </div>
-                    <p class="text-gray-600 mb-6">
-                        "Sejak menggunakan Waazaap, respon pelanggan meningkat 70%. Fitur broadcast-nya sangat membantu promosi produk baru kami."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/32.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <p class="font-medium">Sarah Wijaya</p>
-                            <p class="text-sm text-gray-600">Pemilik Butik Sari</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 2 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <span class="text-sm text-gray-600">1 bulan lalu</span>
-                    </div>
-                    <p class="text-gray-600 mb-6">
-                        "Chatbot Waazaap telah mengurangi beban kerja CS kami hingga 50%. Pelanggan puas karena respon lebih cepat meski di luar jam kerja."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/men/54.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <p class="font-medium">Budi Santoso</p>
-                            <p class="text-sm text-gray-600">Direktur Toko Elektronik ABC</p>
-                        </div>
-                    </div>
-                </div>
-                
-                <!-- Testimonial 3 -->
-                <div class="testimonial-card bg-white p-8 rounded-lg">
-                    <div class="flex items-center mb-4">
-                        <div class="flex text-yellow-400 mr-2">
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star"></i>
-                            <i class="fas fa-star-half-alt"></i>
-                        </div>
-                        <span class="text-sm text-gray-600">2 bulan lalu</span>
-                    </div>
-                    <p class="text-gray-600 mb-6">
-                        "Integrasi API Waazaap dengan website kami berjalan mulus. Sekarang setiap order baru langsung dikonfirmasi via WhatsApp otomatis."
-                    </p>
-                    <div class="flex items-center">
-                        <img src="https://randomuser.me/api/portraits/women/68.jpg" alt="User" class="w-12 h-12 rounded-full mr-4">
-                        <div>
-                            <p class="font-medium">Dewi Anggraeni</p>
-                            <p class="text-sm text-gray-600">Manajer Online Shop XYZ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="max-w-custom mx-auto px-6">
+        <!-- Testimonials content here -->
+      </div>
     </section>
 
     <!-- FAQ -->
     <section id="faq" class="py-16 md:py-24">
-        <div class="container mx-auto px-4">
-            <div class="text-center mb-16">
-                <h2 class="text-3xl md:text-4xl font-bold text-gray-800 mb-4">Pertanyaan yang Sering Diajukan</h2>
-                <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-                    Temukan jawaban untuk pertanyaan umum tentang Waazaap
-                </p>
-            </div>
-            
-            <div class="max-w-3xl mx-auto">
-                <!-- FAQ 1 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <button class="faq-question flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary-600 focus:outline-none">
-                        <span>Apakah Waazaap resmi bekerja sama dengan WhatsApp?</span>
-                        <i class="fas fa-plus text-primary-600"></i>
-                    </button>
-                    <div class="faq-answer mt-4 text-gray-600">
-                        Waazaap menggunakan API resmi WhatsApp Business untuk menyediakan layanan chat marketing. Kami mematuhi semua kebijakan dan persyaratan yang ditetapkan oleh WhatsApp untuk memastikan layanan yang aman dan legal bagi semua pengguna.
-                    </div>
-                </div>
-                
-                <!-- FAQ 2 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <button class="faq-question flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary-600 focus:outline-none">
-                        <span>Berapa lama waktu yang dibutuhkan untuk setup akun?</span>
-                        <i class="fas fa-plus text-primary-600"></i>
-                    </button>
-                    <div class="faq-answer mt-4 text-gray-600">
-                        Anda dapat membuat akun Waazaap dalam waktu kurang dari 5 menit. Proses verifikasi nomor WhatsApp bisnis Anda biasanya memakan waktu 10-15 menit. Setelah itu, Anda langsung dapat mulai menggunakan semua fitur sesuai paket yang dipilih.
-                    </div>
-                </div>
-                
-                <!-- FAQ 3 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <button class="faq-question flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary-600 focus:outline-none">
-                        <span>Apakah ada kontrak jangka panjang?</span>
-                        <i class="fas fa-plus text-primary-600"></i>
-                    </button>
-                    <div class="faq-answer mt-4 text-gray-600">
-                        Tidak. Semua paket kami berbasis bulanan tanpa ikatan. Anda dapat berhenti berlangganan kapan saja tanpa biaya tambahan. Kami juga menawarkan diskon 20% untuk pembayaran tahunan bagi yang ingin berkomitmen lebih lama.
-                    </div>
-                </div>
-                
-                <!-- FAQ 4 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <button class="faq-question flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary-600 focus:outline-none">
-                        <span>Bagaimana dengan keamanan data pelanggan saya?</span>
-                        <i class="fas fa-plus text-primary-600"></i>
-                    </button>
-                    <div class="faq-answer mt-4 text-gray-600">
-                        Data Anda dilindungi dengan enkripsi end-to-end dan disimpan di server berstandar internasional. Kami tidak akan pernah membagikan atau menjual data pelanggan Anda kepada pihak ketiga. Anda memiliki kontrol penuh atas semua data yang dimasukkan ke sistem Waazaap.
-                    </div>
-                </div>
-                
-                <!-- FAQ 5 -->
-                <div class="mb-6 border-b border-gray-200 pb-6">
-                    <button class="faq-question flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary-600 focus:outline-none">
-                        <span>Apakah ada batasan pengiriman pesan?</span>
-                        <i class="fas fa-plus text-primary-600"></i>
-                    </button>
-                    <div class="faq-answer mt-4 text-gray-600">
-                        Setiap paket memiliki kuota pesan bulanan yang berbeda. Namun untuk pesan balasan pelanggan (bukan broadcast) tidak dibatasi. Kami juga menyediakan notifikasi ketika kuota Anda mendekati batas, sehingga Anda dapat meningkatkan paket jika diperlukan.
-                    </div>
-                </div>
-                
-                <!-- FAQ 6 -->
-                <div class="mb-6 pb-6">
-                    <button class="faq-question flex justify-between items-center w-full text-left font-medium text-gray-800 hover:text-primary-600 focus:outline-none">
-                        <span>Bagaimana jika saya butuh bantuan teknis?</span>
-                        <i class="fas fa-plus text-primary-600"></i>
-                    </button>
-                    <div class="faq-answer mt-4 text-gray-600">
-                        Tim support kami tersedia 24/7 melalui live chat, email, dan WhatsApp. Rata-rata waktu respon kami kurang dari 15 menit untuk masalah teknis mendesak. Kami juga menyediakan dokumentasi lengkap dan video tutorial untuk membantu Anda memulai.
-                    </div>
-                </div>
-            </div>
-        </div>
+      <div class="max-w-custom mx-auto px-6">
+        <!-- FAQ content here -->
+      </div>
     </section>
 
     <!-- CTA Section -->
     <section class="py-16 md:py-24 bg-primary-700 text-white">
-        <div class="container mx-auto px-4 text-center">
-            <h2 class="text-3xl md:text-4xl font-bold mb-6">Siap Tingkatkan Penjualan Anda?</h2>
-            <p class="text-xl text-primary-100 max-w-2xl mx-auto mb-10">
-                Daftar sekarang dan dapatkan akses gratis 14 hari ke semua fitur premium Waazaap
-            </p>
-            <div class="flex flex-col sm:flex-row justify-center space-y-4 sm:space-y-0 sm:space-x-4">
-                <a href="#signup" class="bg-white hover:bg-gray-100 text-primary-700 px-8 py-4 rounded-md text-lg font-bold transition inline-block">
-                    Mulai Sekarang - Gratis
-                </a>
-                <a href="#demo" class="border-2 border-white hover:bg-primary-600 text-white px-8 py-4 rounded-md text-lg font-bold transition inline-block">
-                    Lihat Demo
-                </a>
-            </div>
-        </div>
+      <div class="max-w-custom mx-auto px-6 text-center">
+        <!-- CTA content here -->
+      </div>
     </section>
 
     <!-- Footer -->
-    <script src="script.js"></script>
     <footer class="bg-gray-900 text-gray-400 py-12">
-        <div class="container mx-auto px-4">
-            <div class="grid grid-cols-1 md:grid-cols-4 gap-12 mb-12">
-                <!-- Company Info -->
-                <div>
-                    <div class="flex items-center mb-6">
-                        <div class="w-10 h-10 rounded-full bg-primary-600 flex items-center justify-center text-white font-bold text-xl mr-2">W</div>
-                        <span class="text-xl font-bold text-white">Waazaap</span>
-                    </div>
-                    <p class="mb-4">
-                        Solusi chat marketing terbaik untuk bisnis Anda. Tingkatkan engagement dan penjualan melalui WhatsApp.
-                    </p>
-                    <div class="flex space-x-4">
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-facebook-f text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-instagram text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-linkedin-in text-xl"></i>
-                        </a>
-                        <a href="#" class="text-gray-400 hover:text-white transition">
-                            <i class="fab fa-youtube text-xl"></i>
-                        </a>
-                    </div>
-                </div>
-                
-                <!-- Quick Links -->
-                <div>
-                    <h3 class="text-white text-lg font-bold mb-6">Tautan Cepat</h3>
-                    <ul class="space-y-3">
-                        <li><a href="#" class="hover:text-white transition">Tentang Kami</a></li>
-                        <li><a href="#features" class="hover:text-white transition">Fitur</a></li>
-                        <li><a href="#pricing" class="hover:text-white transition">Harga</a></li>
-                        <li><a
+      <div class="max-w-custom mx-auto px-6">
+        <!-- Footer content here -->
+      </div>
+    </footer>
+
+    <script src="script.js"></script>
+  </body>
 </html>
